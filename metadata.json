@@ -1,0 +1,6 @@
+{
+  "name": "Dayframe",
+  "description": "Minimalist mobile-first productivity application with smart task breakdown, auto-scheduling, and immersive step-by-step focus mode.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

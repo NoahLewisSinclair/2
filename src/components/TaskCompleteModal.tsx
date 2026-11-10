@@ -1,0 +1,13 @@
+import React from 'react';
+import { Play, CheckCircle2 } from 'lucide-react';
+import { Task, Subtask } from '../types';
+interface TaskCompleteModalProps { completedTask: Task | null; nextTask: Task | null; nextSubtask: Subtask | null; isOpen: boolean; onContinueToNextTask: () => void; onReturnToPlanner: () => void; }
+export const TaskCompleteModal: React.FC<TaskCompleteModalProps> = ({ completedTask, nextTask, nextSubtask, isOpen, onContinueToNextTask, onReturnToPlanner }) => {
+  if (!isOpen || !completedTask) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55 backdrop-blur-sm animate-fade-in"><div className="w-full max-w-sm bg-white rounded-3xl p-7 shadow-2xl border border-black/[0.08] text-center"><div className="w-16 h-16 rounded-2xl bg-[#07549A] text-white flex items-center justify-center mx-auto mb-4 shadow-lg"><CheckCircle2 className="w-8 h-8" /></div><div className="text-xs font-bold uppercase tracking-wider text-[#07549A] mb-1">Task Complete</div><h2 className="font-heading font-bold text-3xl text-[#171717] tracking-tight mb-1">{completedTask.title}</h2><p className="text-xs font-semibold text-[#171717]/60 mb-6">{completedTask.subtasks.length} of {completedTask.subtasks.length} steps completed</p>
+      {nextTask && nextSubtask ? <div className="mb-6 p-4 rounded-2xl bg-[#F8F9FA] border border-black/[0.05] text-left"><div className="text-[11px] font-bold uppercase tracking-wider text-[#171717]/60 mb-1">Next Up</div><div className="font-heading font-bold text-lg text-[#171717] truncate">{nextTask.title}</div><div className="text-xs font-medium text-[#171717]/70 mt-0.5 truncate">{nextSubtask.title} · {nextSubtask.durationMinutes}m</div></div> : <div className="mb-6 p-4 rounded-2xl bg-[#E2E4D8]/80 text-left flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-[#07549A] shrink-0" /><div className="text-xs font-medium text-[#171717]">All scheduled work is complete. Enjoy your free time.</div></div>}
+      <div className="space-y-2">{nextTask && nextSubtask && <button onClick={onContinueToNextTask} className="w-full py-3.5 px-4 rounded-2xl bg-[#07549A] hover:bg-[#053C6E] text-white font-semibold text-sm flex items-center justify-center gap-2"><Play className="w-4 h-4 fill-current" />Continue to next task</button>}<button onClick={onReturnToPlanner} className={`w-full py-3 px-4 rounded-2xl font-semibold text-xs ${nextTask && nextSubtask ? 'bg-transparent text-[#171717]/70 hover:bg-black/5' : 'bg-[#07549A] text-white hover:bg-[#053C6E]'}`}>Return to Daily Planner</button></div>
+    </div></div>
+  );
+};

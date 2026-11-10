@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --color-cobalt: #07549A;
+    --color-cobalt-dark: #053C6E;
+    --color-cobalt-light: #EBF2F9;
+    --color-sage: #E2E4D8;
+    --color-sage-light: #F4F5F0;
+    --color-charcoal: #171717;
+    --color-surface: #FFFFFF;
+    --color-bg: #F8F9FA;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #171717;
+    background-color: #F8F9FA;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  }
+
+  /* Prevent rubber-band pulling on mobile */
+  html, body {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+}
+
+/* Tabular figures for time displays */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
